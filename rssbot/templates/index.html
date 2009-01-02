@@ -1,0 +1,9 @@
+{% if latest_items %}
+    <ul>
+    {% for item in latest_items %}
+        <li>{{ item.title }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No items are available.</p>
+{% endif %}
