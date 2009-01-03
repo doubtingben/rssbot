@@ -1,7 +1,8 @@
 function mark_as_read(divid) {
-  $("#" + divid).css("border","3px solid red");
   $("#" + divid).children(".content").show();
-  $("#" + divid).children(".content").html("<b>Deleting selection!</b>");
+  $("#" + divid).children(".content").html("<center><img src='/rssbot/ajax-loader.gif'><br /><b>Deleting selection!</b></center>");
+  $.post("/rssbot/mark_as_read/" + divid, function(data) {
+          alert("data loaded: " + data);});
 }
 
 function loaddoc() {
