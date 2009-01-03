@@ -25,17 +25,13 @@ def update_feeds():
                         e_date = e.updated_parsed
                         if not e_date:
                             e_date = datetime.datetime.utcnow()
-                        if hasattr(e, "summary"):
-                            e_content = e.summary.encode('ascii', 'xmlcharrefreplace')
-                        elif hasattr(e, "content"):
-                            e_content = e.content[0].value.encode('ascii', 'xmlcharrefreplace')
                         i = Item(feed = f,
                                  md5sum = md5.new(e.link).hexdigest(),
                                  guid = e.id,
                                  title = e.title.encode('ascii', 'xmlcharrefreplace'),
                                  link = e.link,
                                  date = datetime.datetime.utcfromtimestamp(calendar.timegm(e_date)),
-                                 content = e_content,
+                                 content = e.summary.encode('ascii', 'xmlcharrefreplace'),
                                  context = context,
                                 )
                         i.save()

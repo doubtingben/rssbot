@@ -18,14 +18,14 @@ $(document).ready(function(){
   <div class="filter">
     <form name="filter">
 {% if channels %}
-      <select id="channel">
+      <select class="channel">
   {% for channel in channels %}
         <option value="{{ channel.name }}">{{ channel.name }}</option>
   {% endfor %}
       </select>
 {% endif %}
 {% if contexts %}
-      <select id="context">
+      <select class="context">
   {% for context in contexts %}
         <option value="{{ context.name }}">{{ context.name }}</option>
   {% endfor %}
@@ -36,7 +36,7 @@ $(document).ready(function(){
 	<div class="accordion">
 {% if latest_items %}
   {% for item in latest_items %}
-	  <div class="row">
+	  <div class="row" id="item{{ item.id }}">
 		  <div class="header">
 			  <div class="controls">Mark as Read</div>
   		  <div class="title">{{ item.title }}</div>

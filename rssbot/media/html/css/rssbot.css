@@ -1,0 +1,91 @@
+body {
+	margin: 3px auto;
+	width: 320px;
+	font: 75%/120% Arial, Helvetica, sans-serif;
+}
+
+select {
+  width: 49%;
+  background-color: #e3e2e2;
+}
+
+.accordion {
+	width: 320px;
+}
+
+.accordion .row {
+	padding: 0px;
+	margin: 0px;
+}
+
+.accordion .row .header{
+  background-color: #e3e2e2;
+	padding: 5px;
+	margin: 0px;	
+}
+
+.accordion .row .title {
+  -moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	background-color: #8DC3E9;
+  float: right;
+  color: black;
+	cursor: pointer;
+	font-size: 15px;	
+	padding: 2px;
+	width: 83%;
+}
+
+.accordion .row .controls {
+  -moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	background-color: #00477F;
+	float: left;
+	color: white;
+	cursor: pointer;
+	font-size: 10px;	
+	padding: 2px;
+	width: 13%;
+}
+
+.accordion .row .clear {
+  clear:both
+}
+
+.accordion .row .content {
+	margin: 0;
+	padding: 10px; 
+	display: none;
+}
+
+.accordion .row .footer {
+	padding: 10px;
+	width: 100%;  
+}
+
+.accordion .row .footer .follow_link{
+  -moz-border-radius:5px;
+	-webkit-border-radius:5px;
+  float: right; 
+	background-color: #D9DB56;
+	color: #757116;
+	cursor: pointer;
+	padding: 2px;	
+	margin-left: 10px;
+}
+
+.accordion .row .footer .follow_link a {
+  color: #757116;
+  text-decoration: none;
+}
+
+.accordion .row .footer .send_link {
+  -moz-border-radius:5px;
+	-webkit-border-radius:5px;
+  float: right;
+	background-color: #D9DB56;
+	color: #757116;	
+	cursor: pointer;
+	padding: 2px;
+	margin-left: 10px;	
+}
