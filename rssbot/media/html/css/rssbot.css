@@ -6,9 +6,20 @@ body {
 	font: 75%/120% Arial, Helvetica, sans-serif;
 }
 
+.form { margin-top: 0; margin-bottom: 0; }
+
 select {
   width: 49%;
   background-color: #e3e2e2;
+}
+
+label {
+  font-size: 15px;
+  background-color: #8DC3E9;
+}
+
+#login {
+  
 }
 
 .accordion {

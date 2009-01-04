@@ -32,6 +32,23 @@ $(document).ready(function(){
       </select>
 {% endif %}
     </form>
+    <form name="login">
+{% if loggedin %}
+    <input type="submit" name="logout" value="Logout">
+{% else %}
+    <table>
+      <tr>
+        <td><label for="username">Username:</label></td>
+        <td><input type="text" name="username" id="username"></td>
+        <td colspan="2"><input type="submit" name="login" id="login" value="Login"></td>
+      </tr>
+      <tr>
+        <td><label for="password">Password:</label></td>
+        <td><input type="password" name="password" id="password"></td>
+      </tr>
+    </table>
+{% endif %}
+    </form>
   </div>
 	<div class="accordion">
 {% if latest_items %}

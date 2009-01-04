@@ -1,8 +1,22 @@
 function mark_as_read(divid) {
   $("#" + divid).children(".content").show();
   $("#" + divid).children(".content").html("<center><img src='/rssbot/ajax-loader.gif'><br /><b>Deleting selection!</b></center>");
-  $.post("/rssbot/mark_as_read/" + divid, function(data) {
-          alert("data loaded: " + data);});
+  $.ajax({
+          type: "POST",
+          url: "/rssbot/rssbot.js",
+          data: "{}",
+              //          success: alert("Marked as read : " + divid),
+              //          error: function(XMLHttpRequest, textStatus, errorThrown) {
+              //alert("Status: " + XMLHttpRequest.status + " - " + XMLHttpRequest.statusText);
+              //},
+          complete: function (xhr, textStatus) {
+              if (textStatus == 'error') {
+                alert("Status: " + xhr.status + " - " + xhr.statusText);
+              } else {
+                $("#" + divid).hide();
+              }
+          },
+        });
 }
 
 function loaddoc() {
