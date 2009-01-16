@@ -5,13 +5,10 @@ function mark_as_read(divid) {
           type: "POST",
           url: "/rssbot/rssbot.js",
           data: "{}",
-              //          success: alert("Marked as read : " + divid),
-              //          error: function(XMLHttpRequest, textStatus, errorThrown) {
-              //alert("Status: " + XMLHttpRequest.status + " - " + XMLHttpRequest.statusText);
-              //},
           complete: function (xhr, textStatus) {
               if (textStatus == 'error') {
-                alert("Status: " + xhr.status + " - " + xhr.statusText);
+                $("#" + divid).children(".content").show();
+                $("#" + divid).children(".content").html("Status: " + xhr.status + " - " + xhr.statusText);
               } else {
                 $("#" + divid).hide();
               }
@@ -20,6 +17,28 @@ function mark_as_read(divid) {
 }
 
 function loaddoc() {
+  $(".log_button").click(function(){
+    $(".loginform").toggle()
+    }
+  );
+  $(".formsubmit").click(function(){
+    $.ajax({
+      type: "POST",
+      data: "username=" + $("#username").attr('value') +
+            "& password=" + $("#password").attr('value'),
+      url: "/mysite/login/",
+      complete: function (xhr, textStatus) {
+        if (textStatus == 'error') {
+          $(".loginform .error").show();
+          $(".loginform .error").html("Status: " + xhr.status + " - " + xhr.statusText);
+        } else {
+          $(".loginform .error").html("Status: " + xhr.status + " - " + xhr.statusText);
+        }
+            },
+                });
+      }
+              
+  );
   $(".accordion .content").hide();
   $(".accordion .footer .window").hide();
   $(".accordion .title").click(function(){

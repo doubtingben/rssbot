@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     # Example:
     # (r'^mysite/', include('mysite.foo.urls')),
     (r'^items/', 'mysite.rssbot.views.index'),
+    (r'^login/', 'mysite.rssbot.views.login'),                       
     
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:

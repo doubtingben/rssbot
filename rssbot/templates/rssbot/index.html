@@ -15,8 +15,9 @@ $(document).ready(function(){
 
 </head>
 <body>
-  <div class="filter">
-    <form name="filter">
+
+  <form name="filter">
+    <div class="filter">
 {% if channels %}
       <select class="channel">
   {% for channel in channels %}
@@ -31,25 +32,34 @@ $(document).ready(function(){
   {% endfor %}
       </select>
 {% endif %}
-    </form>
+    </div>
+    <div class="log_button">
+      Login
+    </div>
+    <div class="clear"></div>
+  </form>
+
     <form name="login">
 {% if loggedin %}
     <input type="submit" name="logout" value="Logout">
 {% else %}
-    <table>
-      <tr>
-        <td><label for="username">Username:</label></td>
-        <td><input type="text" name="username" id="username"></td>
-        <td colspan="2"><input type="submit" name="login" id="login" value="Login"></td>
-      </tr>
-      <tr>
-        <td><label for="password">Password:</label></td>
-        <td><input type="password" name="password" id="password"></td>
-      </tr>
-    </table>
+    <div class="loginform">
+    <div class="error"></div>
+     <div class="formfields">
+       <label for="username">Username:</label>
+       <input type="text" name="username" id="username">
+       <br />
+       <label for="password">Password:</label>
+       <input type="password" name="password" id="password">
+     </div>
+     <div class="formsubmit">
+       Submit
+     </div>
+     <div class="clear"></div>
+    </div>
 {% endif %}
     </form>
-  </div>
+
 	<div class="accordion">
 {% if latest_items %}
   {% for item in latest_items %}

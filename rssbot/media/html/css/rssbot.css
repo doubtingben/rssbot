@@ -6,20 +6,49 @@ body {
 	font: 75%/120% Arial, Helvetica, sans-serif;
 }
 
-.form { margin-top: 0; margin-bottom: 0; }
-
-select {
-  width: 49%;
-  background-color: #e3e2e2;
+.loginform {
+  display: none;
 }
 
-label {
-  font-size: 15px;
-  background-color: #8DC3E9;
+.formfields {
+  -moz-border-radius:5px;                                                                                             
+  -webkit-border-radius:5px;   
+  float: left;
+  width: 83%;
+  font-size: 10px;
+  padding: 2px; 
+  background-color: #4C88BE;
 }
 
-#login {
-  
+.formsubmit {
+  float: right;
+  width: 13%;
+  -moz-border-radius:5px;                                                                                             
+  -webkit-border-radius:5px;                                                                                     
+   background-color: #00477F;
+   padding: 17px 2px 17px 2px;
+   cursor: pointer;
+   color: white;
+}
+
+.log_button {
+  -moz-border-radius:5px;                                                                                             
+  -webkit-border-radius:5px;                                                                                          
+  cursor: pointer;
+  float: right; 
+  width: 13%;
+  padding: 5px 2px 5px 2px;                                                                                   
+  background-color: #4C88BE;
+}
+
+.filter {
+  -moz-border-radius:5px;                                                                                             
+  -webkit-border-radius:5px;   
+  float: left;
+  width: 83%;
+  font-size: 12px;
+  padding: 2px; 
+  background-color: #4C88BE;
 }
 
 .accordion {
@@ -61,7 +90,7 @@ label {
 	width: 13%;
 }
 
-.accordion .row .clear {
+.clear {
   clear:both
 }
 

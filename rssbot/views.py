@@ -3,7 +3,8 @@ from django.template import Context, loader
 from django.shortcuts import render_to_response
 from mysite.rssbot.models import Item, Channel, Context
 from django.http import HttpResponse
-    
+from django.contrib.auth.models import User
+
 def index(request):
     latest_items = Item.objects.all().order_by('-date')[:10]
     channels = Channel.objects.all().order_by('-name')
@@ -18,3 +19,11 @@ def index(request):
                                                     'contexts': contexts,
                                                     'loggedin': loggedin,})
 
+def login(request):
+    u = User.objects.get(username=request.POST['username'])
+    if u.password == request.POST['password']:
+        request.session['user_id'] = u.id
+        return HttpResponse("You're logged in.")
+    else:
+        return HttpResponse("Your username and password didn't match.")
+    
