@@ -16,6 +16,15 @@ function mark_as_read(divid) {
         });
 }
 
+function logout() {
+
+}
+
+function loggedin() {
+    $(".log_button").html("Logout");
+    $(".loginform").hide();
+}
+
 function loaddoc() {
   $(".log_button").click(function(){
     $(".loginform").toggle()
@@ -24,15 +33,16 @@ function loaddoc() {
   $(".formsubmit").click(function(){
     $.ajax({
       type: "POST",
-      data: "username=" + $("#username").attr('value') +
-            "& password=" + $("#password").attr('value'),
+      data: {user:$("#user").attr('value'),
+             pass:$("#pass").attr('value')
+                    },
       url: "/mysite/login/",
       complete: function (xhr, textStatus) {
         if (textStatus == 'error') {
           $(".loginform .error").show();
           $(".loginform .error").html("Status: " + xhr.status + " - " + xhr.statusText);
         } else {
-          $(".loginform .error").html("Status: " + xhr.status + " - " + xhr.statusText);
+            loggedin();
         }
             },
                 });

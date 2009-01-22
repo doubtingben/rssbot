@@ -20,10 +20,16 @@ def index(request):
                                                     'loggedin': loggedin,})
 
 def login(request):
-    u = User.objects.get(username=request.POST['username'])
-    if u.password == request.POST['password']:
-        request.session['user_id'] = u.id
-        return HttpResponse("You're logged in.")
+    try:
+        u = User.objects.get(username=request.POST['user'])
+    except User.DoesNotExist:
+        return HttpResponse("No user.")
     else:
-        return HttpResponse("Your username and password didn't match.")
+        if u.check_password(request.POST['pass']):
+            request.session['user_id'] = u.id
+            return HttpResponse("You're logged in.")
+        else:
+            return HttpResponse("Bad password")
+        
+
     
