@@ -15,16 +15,21 @@ function mark_as_read(divid) {
           },
         });
 }
-
+ 
 function logout() {
-
+  $(".log_button").html("Login");
+  $(".loginform").show();
+  $(".loginform .error").show();
+  $(".loginform .error").html("Logged out!");
 }
-
+ 
 function loggedin() {
     $(".log_button").html("Logout");
     $(".loginform").hide();
+    $(".log_button").unbind();
+    $(".log_button").bind("click", logout());
 }
-
+ 
 function loaddoc() {
   $(".log_button").click(function(){
     $(".loginform").toggle()
@@ -42,7 +47,13 @@ function loaddoc() {
           $(".loginform .error").show();
           $(".loginform .error").html("Status: " + xhr.status + " - " + xhr.statusText);
         } else {
-            loggedin();
+            var server_response = eval( "(" + xhr.responseText + ")" );
+            if (server_response.response) { 
+              loggedin(xhr.responseText);
+            } else {
+              $(".loginform .error").show();
+              $(".loginform .error").html(server_response.msg);
+            }
         }
             },
                 });

@@ -1,9 +1,92 @@
-{% if latest_items %}
-    <ul>
-    {% for item in latest_items %}
-        <li>{{ item.title }}</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No items are available.</p>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<title>Android</title>
+<link rel="stylesheet" href="/rssbot/css/rssbot.css" type="text/css" />
+<script type="text/javascript" src="/rssbot/jquery.js"></script>
+<script type="text/javascript" src="/rssbot/rssbot.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  loaddoc();
+});
+</script>
+
+</head>
+<body>
+
+  <form name="filter">
+    <div class="filter">
+{% if channels %}
+      <select class="channel">
+  {% for channel in channels %}
+        <option value="{{ channel.name }}">{{ channel.name }}</option>
+  {% endfor %}
+      </select>
 {% endif %}
+{% if contexts %}
+      <select class="context">
+  {% for context in contexts %}
+        <option value="{{ context.name }}">{{ context.name }}</option>
+  {% endfor %}
+      </select>
+{% endif %}
+    </div>
+    <div class="log_button">
+      Login
+    </div>
+    <div class="clear"></div>
+  </form>
+
+    <form name="login">
+{% if loggedin %}
+    <input type="submit" name="logout" value="Logout">
+{% else %}
+    <div class="loginform">
+    <div class="error"></div>
+     <div class="formfields">
+       <label for="user">Username:</label>
+       <input type="text" name="user" id="user">
+       <br />
+       <label for="pass">Password:</label>
+       <input type="password" name="pass" id="pass">
+     </div>
+     <div class="formsubmit">
+       Submit
+     </div>
+     <div class="clear"></div>
+    </div>
+{% endif %}
+    </form>
+
+	<div class="accordion">
+{% if latest_items %}
+  {% for item in latest_items %}
+	  <div class="row" id="item{{ item.id }}">
+		  <div class="header">
+			  <div class="controls">Mark as Read</div>
+  		  <div class="title">{{ item.title }}</div>
+  			<div class="clear"></div>
+			</div>
+			<div class="content">{{ item.content|safe }}
+			  <div class="footer">
+                          <div class="controls">Mark as Read</div>
+				  <div class="follow_link"><a href="{{ item.link }}" target="_blank">Follow <br />Link</a></div>
+					<div class="send_link">Send <br />Article</div>					
+					<div class="clear"></div>
+					<div class="window">Footer window!</div>
+			  </div>
+		  </div>
+		</div>
+  {% endfor %}
+{% else %}
+  <p>No Items are available.</p>
+{% endif %}
+
+	  
+  </div>
+
+
+</body>
+</html>

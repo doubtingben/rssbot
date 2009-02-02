@@ -14,7 +14,7 @@ def index(request):
         loggedin = 1
     else:
         loggedin = 0
-    return render_to_response('rssbot/index.html', {'latest_items': latest_items,
+    return render_to_response('index.html', {'latest_items': latest_items,
                                                     'channels': channels,
                                                     'contexts': contexts,
                                                     'loggedin': loggedin,})
@@ -23,13 +23,10 @@ def login(request):
     try:
         u = User.objects.get(username=request.POST['user'])
     except User.DoesNotExist:
-        return HttpResponse("No user.")
+        return HttpResponse("{response: 'False', msg: 'No such user.'}", mimetype='text/javascript')
     else:
         if u.check_password(request.POST['pass']):
             request.session['user_id'] = u.id
-            return HttpResponse("You're logged in.")
+            return HttpResponse("{response: 'True', msg: 'Login successful.'}", mimetype='text/javascript')            
         else:
-            return HttpResponse("Bad password")
-        
-
-    
+            return HttpResponse("{response: 'False', msg: 'Bad password.'}", mimetype='text/javascript')                        
